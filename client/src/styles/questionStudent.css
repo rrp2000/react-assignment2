@@ -1,0 +1,28 @@
+.question{
+    display: flex;
+    flex-direction: column;
+}
+
+.question > h4{
+    color:rgb(202, 202, 202)
+}
+
+.question > .input{
+    color:rgb(241, 246, 245)
+}
+.question > .input > input{
+    accent-color: red;
+}
+
+.question > button{
+    background-color: rgb(130, 195, 236);
+    padding: 10px;
+    width: 150px;
+    border-radius: 10px;
+    margin: 40px;
+    border: none;
+}
+.question > button:hover{
+    background-color: rgb(130, 195, 236, 0.777);
+}
+

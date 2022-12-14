@@ -1,0 +1,43 @@
+.RegisterForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin-top: -50px;
+}
+.RegisterForm h1{
+    color: rgb(241, 246, 245);
+}
+
+.RegisterForm input{
+    padding: 10px;
+    margin: 10px;
+    width: 20rem;
+    border-radius: 10px;
+    background: rgb(241, 246, 245);
+    border: none;
+}
+
+.RegisterForm a{
+    padding: 10px;
+    text-decoration: none;
+    color: rgb(241, 246, 245);
+}
+
+.RegisterForm a:hover{
+    color: rgb(241, 246, 245, 0.777);
+}
+
+.RegisterForm button{
+    background-color: rgb(130, 195, 236);
+    padding: 10px;
+    width: 150px;
+    border-radius: 10px;
+    margin: 40px;
+    border: none;
+}
+
+.RegisterForm > button:hover{
+    background-color: rgb(130, 195, 236, 0.777);
+}

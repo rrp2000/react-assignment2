@@ -1,0 +1,26 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+}
+
+.navbar > a {
+  text-decoration: none;
+  color: rgb(109, 103, 228);
+  padding-left: 50px;
+}
+
+.navbar > a:hover {
+  color: rgba(109, 103, 228, 0.842);
+}
+
+.navbar > h6 {
+  padding-right: 50px;
+  color: rgb(109, 103, 228);
+  font-size: medium;
+}
+
+.navbar > h6:hover {
+  color: brown;
+}

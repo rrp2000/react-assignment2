@@ -1,0 +1,43 @@
+.LoginForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin-top: -50px;
+}
+.LoginForm>h1{
+    color: rgb(241, 246, 245);
+}
+
+.LoginForm input{
+    padding: 10px;
+    margin: 10px;
+    width: 20rem;
+    border-radius: 10px;
+    background: rgb(241, 246, 245);
+    border: none;
+}
+
+.LoginForm > a{
+    padding: 10px;
+    text-decoration: none;
+    color: rgb(241, 246, 245);
+}
+
+.LoginForm > a:hover{
+    color: rgb(241, 246, 245, 0.777);
+}
+
+.LoginForm > button{
+    background-color: rgb(130, 195, 236);
+    padding: 10px;
+    width: 150px;
+    border-radius: 10px;
+    margin: 40px;
+    border: none;
+}
+
+button:hover{
+    background-color: rgb(130, 195, 236, 0.777);
+}
