@@ -11,9 +11,10 @@ router.post("/admin/register",adminController.adminRegister)
 router.post("/admin/login",adminController.adminLogin)
 
 
-router.post("/questions", questionController.createQuestion)
-router.get("/questions", questionController.getQuestions)
-router.put("/questions", questionController.updateQuestions)
+router.post("/questions", middleware.auth,questionController.createQuestion)
+router.get("/questions",middleware.auth, questionController.getQuestions)
+router.get("/question/:id",middleware.auth, questionController.getQuestion)
+router.put("/questions",middleware.auth, questionController.updateQuestions)
 
 
 router.post("/student/register", studentController.studentRegister)

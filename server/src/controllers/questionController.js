@@ -4,6 +4,8 @@ const questionModel = require("../models/questionModel")
 
 const createQuestion = async (req,res)=>{
     try {
+        let decodedToken = req.decodedToken
+        if(!decodedToken.isAdmin) res.status(400).send({status:false,message:"You are not allowed"})
         let questionData = req.body
         let {question, ans1, ans2, ans3, ans4, answer} = questionData
     
@@ -54,11 +56,29 @@ const getQuestions = async (req,res)=>{
     }
 }
 
+const getQuestion = async (req,res)=>{
+    try {
+        let decodedToken = req.decodedToken
+        if(!decodedToken.isAdmin) res.status(400).send({status:false,message:"You are not allowed"})
+        let id = req.params.id
+        if(!id) return res.status(400).send({status:false,message:"provide a id."})
+        let question = await questionModel.findById(id)
+        if(!question) return res.status(400).send({status:false,message:"Question does't exist."})
+        return res.status(200).json(question)
+        
+    } catch (error) {
+        return res.status(500).send({status:false, message:error.message}) 
+    }
+}
+
 
 const updateQuestions = async (req,res)=>{
     try {
+        let decodedToken = req.decodedToken
+        if(!decodedToken.isAdmin) res.status(400).send({status:false,message:"You are not allowed"})
 
         let data = req.body
+        console.log(data)
         dataToBeUpdated = {
             question: data.question,
             ans1:data.ans1,
@@ -76,4 +96,4 @@ const updateQuestions = async (req,res)=>{
     }
 }
 
-module.exports = {createQuestion,getQuestions,updateQuestions}
+module.exports = {createQuestion,getQuestions,getQuestion,updateQuestions}

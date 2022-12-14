@@ -10,6 +10,7 @@ import StudentLogin from "./components/StudentLogin";
 
 import "./app.css"
 import Navbar from "./components/Navbar";
+import Question from "./components/Question";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/homepage" element = {<Homepage />} />
         <Route path="/student/signup" element = {<StudentRegister />} />
         <Route path="/student/login" element = {<StudentLogin />} />
+        <Route path="/homepage/update/:id" element = {<Question />} />
       </Routes>
     </Router>
   );

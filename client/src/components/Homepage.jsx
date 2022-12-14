@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Question from "../assets/Question";
 import QuestionForStudent from "../assets/QuestionForStudent";
+import QuestionPackets from "../assets/QuestionPackets";
 import "../styles/homepage.css";
 
 const Homepage = () => {
@@ -41,7 +41,9 @@ const Homepage = () => {
     event.preventDefault();
     setIsClicked(true);
     axios
-      .get("/questions")
+      .get("/questions", {
+        headers: { "x-api-key": localStorage.getItem("x-api-key") },
+      })
       .then((res) => {
         setQuestions([...res.data]);
         console.log(res.data);
@@ -86,64 +88,68 @@ const Homepage = () => {
           {!isclicked && <button onClick={getQuestions}>get questions</button>}
           {isclicked && (
             <div className="questions">
-              {questions.map((ele) => {
-                return (
-                  <Question
-                    key={ele._id}
-                    question={ele.question}
-                    ans1={ele.ans1}
-                    ans2={ele.ans2}
-                    ans3={ele.ans3}
-                    ans4={ele.ans4}
-                    answer={ele.answer}
-                    id={ele._id}
-                  ></Question>
-                );
-              })}
-              <h5>Add new question</h5>
-              <input
-                type="text"
-                name="question"
-                placeholder="Question"
-                onChange={handleChange}
-                value={question.question}
-              />
-              <input
-                type="text"
-                name="ans1"
-                placeholder="Option 1"
-                onChange={handleChange}
-                value={question.ans1}
-              />
-              <input
-                type="text"
-                name="ans2"
-                placeholder="Option 2"
-                onChange={handleChange}
-                value={question.ans2}
-              />
-              <input
-                type="text"
-                name="ans3"
-                placeholder="Option 3"
-                onChange={handleChange}
-                value={question.ans3}
-              />
-              <input
-                type="text"
-                name="ans4"
-                placeholder="Option 4"
-                onChange={handleChange}
-                value={question.ans4}
-              />
-              <input
-                type="text"
-                name="answer"
-                placeholder="Answer"
-                onChange={handleChange}
-                value={question.answer}
-              />
-              <button onClick={handleCreate}>Add</button>
+              <div className="showQuestions">
+                {questions.map((ele) => {
+                  return (
+                    <QuestionPackets
+                      key={ele._id}
+                      question={ele.question}
+                      ans1={ele.ans1}
+                      ans2={ele.ans2}
+                      ans3={ele.ans3}
+                      ans4={ele.ans4}
+                      answer={ele.answer}
+                      id={ele._id}
+                    ></QuestionPackets>
+                  );
+                })}
+              </div>
+              <div className="addQuestion">
+                <h5>Add new question</h5>
+                <input
+                  type="text"
+                  name="question"
+                  placeholder="Question"
+                  onChange={handleChange}
+                  value={question.question}
+                />
+                <input
+                  type="text"
+                  name="ans1"
+                  placeholder="Option 1"
+                  onChange={handleChange}
+                  value={question.ans1}
+                />
+                <input
+                  type="text"
+                  name="ans2"
+                  placeholder="Option 2"
+                  onChange={handleChange}
+                  value={question.ans2}
+                />
+                <input
+                  type="text"
+                  name="ans3"
+                  placeholder="Option 3"
+                  onChange={handleChange}
+                  value={question.ans3}
+                />
+                <input
+                  type="text"
+                  name="ans4"
+                  placeholder="Option 4"
+                  onChange={handleChange}
+                  value={question.ans4}
+                />
+                <input
+                  type="text"
+                  name="answer"
+                  placeholder="Answer"
+                  onChange={handleChange}
+                  value={question.answer}
+                />
+                <button onClick={handleCreate}>Add</button>
+              </div>
             </div>
           )}
         </div>
